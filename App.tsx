@@ -1,117 +1,89 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { 
+  TabProvider, 
+} from './context/TabContext.tsx';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import Button from './components/Button.tsx';
+import TabsFooter from './components/TabsFooter.tsx';
+import MainContent from './components/MainContent.tsx';
+import Colors from './Colors.js';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+function Header() : React.JSX.Element {
+  const props = {
+    icon: "search",
+  }
+
+  // const renderHeaderText = () : ReactNode => {
+  //   return null;
+  // }
+
+  return(
+    <View style={styles.headerContainer}>
+      <View>
+        <Text style={styles.titleText}>Inventory List</Text>
+      </View>
+      <Button {...props} />
     </View>
   );
 }
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  // const [currentTab, setCurrentTab] = useState<Tabs>(Tabs.Home);
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaView style={{backgroundColor: Colors.background.secondary}}>
+        <StatusBar
+          backgroundColor={Colors.background.primary}
+          barStyle={'dark-content'}
+          />
+        <View style={styles.appContainer} >
+          <TabProvider>
+            <Header/>
+            <MainContent/>
+            <TabsFooter />
+          </TabProvider>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView> 
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  appContainer: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
-  sectionTitle: {
+  headerContainer: {
+    height: "8%",
+    width: "100%",
+    backgroundColor: Colors.background.primary,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: 'space-between',
+    shadowColor: '#0',
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+    shadowRadius: 2,
+    elevation: 1,
+    paddingHorizontal: 20,
+    paddingTop: 4,
+  },
+  titleText: {
     fontSize: 24,
     fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    color: Colors.primary,
   },
 });
 
