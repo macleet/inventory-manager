@@ -14,7 +14,7 @@
 ## Key Features
 
 ## Tech Stack
-This mobile application uses the React Native library for its frontend. It utilizes a Node.js Express backend with a PostgreSQL database connection.
+This Android application uses the React Native library for its frontend. It utilizes a Node.js Express backend with a PostgreSQL database connection.
 
 ## Installation and Setup
 ### Prerequisites
