@@ -74,7 +74,12 @@ emulator.sh
 !.yarn/sdks
 !.yarn/versions
 
+# Extensions
 .VSCodeCounter/
 
+# Builds
 ios/
 android/
+
+# Unused
+server/
