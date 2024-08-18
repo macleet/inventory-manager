@@ -73,3 +73,8 @@ emulator.sh
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.VSCodeCounter/
+
+ios/
+android/
