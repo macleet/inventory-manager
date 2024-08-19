@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, ScrollView, Pressable, TextInputProps } from "react-native";
-import FormField, { FieldProps } from "../Form/FormField.tsx";
+import FormField, { FieldProps } from "../FormField/FormField.tsx";
 import { addTo, getFrom } from "../../storage/storage.ts";
 import { ItemProps } from "./ListItem.tsx";
 

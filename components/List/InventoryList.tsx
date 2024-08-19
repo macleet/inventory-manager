@@ -13,7 +13,7 @@ import {
     Animated
 } from 'react-native';
 
-import FoldersBar from '../Form/FoldersBar.tsx';
+import FoldersBar from './FoldersBar.tsx';
 import Colors from '../../Colors.js';
 
 import PlusIcon from '../../Assets/svg/plus.svg';
